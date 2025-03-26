@@ -2,6 +2,7 @@ const dayNameId = document.getElementById('day-name');
 const dayMonthId = document.getElementById('day-month');
 const yearId = document.getElementById('year');
 const hourId = document.getElementById('hour-text');
+
 let hour12 = false;
 
 function getDayName(dayNbr) {
@@ -33,7 +34,7 @@ function getDate() {
     if (!hour12) {
         hourId.innerHTML = hour;  
     } else {
-        const hour12Format = today.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', second: '2-digit', hour12: true });
+        const hour12Format = today.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true });
         const [h, m, s] = hour12Format.split(/:| /);
         let ampm = '';
         if (hour12Format.includes('AM')) {
@@ -49,7 +50,6 @@ function getDate() {
 export function startClock(time) {
     setInterval(getDate, time * 1000);
 }
-
 
 const time = document.getElementById('hour');
 
